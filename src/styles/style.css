@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('./example.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.hello {
+    color: red;
+    font-family: 'MyFont';
+}
+
+#charizard-image {
+    position: relative;
+    top: 10px;
+    width: 50px;
+    height: auto;
+}

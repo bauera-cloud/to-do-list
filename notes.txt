@@ -1,0 +1,73 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Useful function for date?
+// function rearrange(date) {
+//     let [yyyy, dd, mm] = date.split('-').map(Number)
+//     return [yyyy, mm - 1, dd] //mm - 1 because new Date monthIndex argument
+// }
+// console.log(new Date(...rearrange(dateFromInput)))
+
+let dateFromInput = "2023-25-12"
+//input: "2023-25-12". output: [2023, 11, 12]. 
