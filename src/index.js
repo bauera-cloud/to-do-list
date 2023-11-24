@@ -1,34 +1,70 @@
+import uniqid from 'uniqid';
+
 function Project(title, description) {
+    //2 default projects with 2 default tasks
+    if (!localStorage.getItem('projects')) {
+        _populateStorage();
+    }
+
+    let projects = JSON.parse(localStorage.getItem('projects'))
     let project = {};
 
+    project.id = uniqid();
     project.title = title;
     project.description = description;
     project.tasks = [];
 
-    project.addTask = (task) => {
-        project.tasks.push(task)
-        project.save()
+    // project.edit = (property, value) => {
+    //     let parsedProject = project.get()
+    //     parsedProject[property] = value;
+    //     localStorage.setItem(project.title, JSON.stringify(parsedProject))
+    // }
+
+    project.addOne = (newProject) => {
+        projects.push(newProject)
+        localStorage.setItem('projects', JSON.stringify(projects))
     }
 
-    project.edit = (property, value) => {
-        let parsedProject = project.get()
-        parsedProject[property] = value;
-        localStorage.setItem(project.title, JSON.stringify(parsedProject))
+    //deletes project at index of the projects array
+    project.deleteOne = (index) => {
+        projects.splice(index, 1)
+        localStorage.setItem('projects', JSON.stringify(projects))
     }
 
-    project.save = () => {
-        localStorage.setItem(project.title, JSON.stringify(project))
-    }
-    project.delete = () => {
-        localStorage.removeItem(project.title)
+    //returns obj at index in the projects array
+    project.findOne = (index) => {
+        return projects[index]
     }
 
-    project.get = () => {
-        return JSON.parse(localStorage.getItem(project.title))
+    // takes index, replaces obj at index with the new project. resets id
+    project.replaceOne = (index, newProject) => {
+        projects[index] = newProject
+        localStorage.setItem('projects', JSON.stringify(projects))
     }
+
+    //generates the first 2 projects
+    function _populateStorage() {
+        localStorage.setItem('projects', JSON.stringify([]))
+        let projects = JSON.parse(localStorage.getItem('projects'))
+        let project1 = Project('project 1', 'do stuff');
+        project1.id = uniqid();
+        projects.push(project1);
+        let project2 = Project('project 2', 'do other stuff')
+        project2.id = uniqid();
+        projects.push(project2);
+        localStorage.setItem('projects', JSON.stringify(projects))
+    }
+
+
 
     return project
 }
+
+let projects = Project();
+// for (let i = 0; i < 10; i++) {
+//     projects.addOne(Project('title', 'description'))
+// }
+
 
 function Task(title, description) {
     let task = {};
@@ -38,34 +74,3 @@ function Task(title, description) {
 
     return task
 }
-
-//2 default projects with 2 default tasks
-let project1 = Project('project 1', 'do stuff')
-let task1 = Task('task1', 'task1 description')
-project1.addTask(task1)
-let task2 = Task('task2', 'task2 description')
-project1.addTask(task2)
-
-let project2 = Project('project 2', 'do other stuff')
-let task3 = Task('task3', 'task3 description')
-project2.addTask(task3)
-let task4 = Task('task4', 'task4 description')
-project2.addTask(task4)
-
-let project3 = Project('project 3', 'do 3 stuff');
-project3.addTask(Task('task5', 'task5 description'))
-
-project1.edit('title', 'BLAH')
-
-/* 
-algorithm
-function deleteTask
-if there's a task in this project with the name/title of this task,
-    delete the task from the list of tasks in this project.
-
-
-function editTask
-if there's a task in this project with the name 
-*/
-
-
