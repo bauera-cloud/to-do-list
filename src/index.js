@@ -5,7 +5,6 @@ function Project(title, description) {
     if (!localStorage.getItem('projects')) {
         _populateStorage();
     }
-
     let projects = JSON.parse(localStorage.getItem('projects'))
     let project = {};
 
@@ -47,11 +46,8 @@ function Project(title, description) {
         localStorage.setItem('projects', JSON.stringify([]))
         let projects = JSON.parse(localStorage.getItem('projects'))
         let project1 = Project('project 1', 'do stuff');
-        project1.id = uniqid();
-        projects.push(project1);
         let project2 = Project('project 2', 'do other stuff')
-        project2.id = uniqid();
-        projects.push(project2);
+        projects.push(project1, project2);
         localStorage.setItem('projects', JSON.stringify(projects))
     }
 
