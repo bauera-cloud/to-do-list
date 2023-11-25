@@ -13,11 +13,12 @@ function Project(title, description) {
     project.description = description;
     project.tasks = [];
 
-    // project.edit = (property, value) => {
-    //     let parsedProject = project.get()
-    //     parsedProject[property] = value;
-    //     localStorage.setItem(project.title, JSON.stringify(parsedProject))
-    // }
+    //given an id, property, and value of a project, edit the project
+    project.editProperty = (id, property, value) => {
+        let parsedProject = projects.find((project) => project.id === id)
+        parsedProject[property] = value;
+        localStorage.setItem('projects', JSON.stringify(projects))
+    }
 
     project.addOne = (newProject) => {
         projects.push(newProject)
@@ -25,19 +26,22 @@ function Project(title, description) {
     }
 
     //deletes project at index of the projects array
-    project.deleteOne = (index) => {
-        projects.splice(index, 1)
+    project.deleteOne = (id) => {
+        let oldProjectIndex = projects.findIndex((project) => project.id === id);
+        projects.splice(oldProjectIndex, 1)
         localStorage.setItem('projects', JSON.stringify(projects))
     }
 
-    //returns obj at index in the projects array
-    project.findOne = (index) => {
-        return projects[index]
+    //returns obj with id in the projects array
+    project.findOne = (id) => {
+        return projects.find((project) => project.id === id)
     }
 
-    // takes index, replaces obj at index with the new project. resets id
-    project.replaceOne = (index, newProject) => {
-        projects[index] = newProject
+    // takes id, replaces obj with the new project
+    project.replaceOne = (id, newProject) => {
+        let oldProjectIndex = projects.findIndex((project) => project.id === id);
+        newProject.id = id;
+        projects[oldProjectIndex] = newProject;
         localStorage.setItem('projects', JSON.stringify(projects))
     }
 
