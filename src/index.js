@@ -76,6 +76,29 @@ function Database() {
         return project
     }
 
+    const deleteProject = (projectId) => {
+        let projects = JSON.parse(localStorage.getItem('projects'));
+        let projectIndex = projects.findIndex((project) => project.id === projectId)
+        projects.splice(projectIndex, 1)
+        console.log('hi')
+        localStorage.setItem('projects', JSON.stringify(projects))
+    }
+
+    const getProjectTasks = (projectId) => {
+        let { tasks } = getProject(projectId)
+        return tasks
+    }
+
+    const replaceProject = (projectId, projectReplacement) => {
+        let project = getProject(projectId)
+        let newProject = { ...project, ...projectReplacement };
+        deleteProject(projectId)
+
+        let projects = JSON.parse(localStorage.getItem('projects'));
+        projects.push(newProject)
+        localStorage.setItem('projects', JSON.stringify(projects))
+    }
+
     const _populateStorage = () => {
         localStorage.setItem('projects', JSON.stringify([]))
         const projects = JSON.parse(localStorage.getItem('projects'))
@@ -94,14 +117,17 @@ function Database() {
     }
 
 
-    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks, getProject }
+    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks, getProject, deleteProject, getProjectTasks, replaceProject }
 }
 
+// localStorage.clear()
 let database = Database();
+
+let projectTitle = 'title input'
+let projectDesc = 'desc input'
 // database.createProject({ title: 'title', description: 'desc' });
 // database.createTask({ title: 'task title 2', description: 'task description 2', completed: true, priority: true }, 'lpo3vuu6')
-
-
+database.replaceProject("lpr8ourc", { title: projectTitle, description: projectDesc })
 
 
 
