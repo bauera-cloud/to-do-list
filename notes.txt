@@ -1,9 +1,17 @@
+ADD OTHER CRUD OPERATIONS
 
 
+RENAME CRUD OPERATIONS?: 
+database.createProject({})
+database.createTask({}, projectId)
 
+might rename with an alias when importing from other module(s)
 
+database.addProject({})
+database.addToDo({}, projectId)
 
 
+DECLUTTER DATABASE() WITH DECONSTRUCTION OF CRUD OPERATORS
 
 
 
@@ -57,17 +65,23 @@
 
 
 
+adding global variables with webpack
+https://stackoverflow.com/questions/37656592/define-global-variable-with-webpack
 
 
 
 
 
-    Useful function for date?
-// function rearrange(date) {
-//     let [yyyy, dd, mm] = date.split('-').map(Number)
-//     return [yyyy, mm - 1, dd] //mm - 1 because new Date monthIndex argument
-// }
-// console.log(new Date(...rearrange(dateFromInput)))
 
-let dateFromInput = "2023-25-12"
-//input: "2023-25-12". output: [2023, 11, 12]. 
+
+
+//NOT INSIDE TASK()
+// // let task1 = Task('title1', 'description1', '2014-11-18')
+// //how to store the "date" the property
+// /*
+//     a: '2014-11-18'
+//     b: [2014, 10, 18]
+//     c: new Date(...dateNumbers(date))
+// */
+// //let's say you had a project of tasks with a data property
+// //sort the tasks by their date
