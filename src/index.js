@@ -1,5 +1,5 @@
 import uniqid from 'uniqid';
-import { compareAsc, format, isSameWeek, isThisWeek, isToday, parseISO } from 'date-fns';
+import { compareAsc, format, isThisWeek, isToday, parseISO } from 'date-fns';
 
 function Database() {
 
@@ -60,6 +60,22 @@ function Database() {
         return allTasks.filter((task) => isThisWeek(parseISO(task.date)))
     }
 
+    //get project with either a projectId or a taskId
+    function getProject(id) {
+        let projects = JSON.parse(localStorage.getItem('projects'))
+        let allTasks = getAllTasks()
+        let project;
+        //if the id is a project id return it from the projects array
+        if (projects.map((project) => project.id).includes(id)) {
+            project = projects.find((project) => project.id === id)
+            //else if the id is a task id find the associated task, get projectId, return project from projects array.
+        } else {
+            let task = allTasks.find((task) => task.id === id)
+            project = projects.find((project) => task.projectId === project.id)
+        }
+        return project
+    }
+
     const _populateStorage = () => {
         localStorage.setItem('projects', JSON.stringify([]))
         const projects = JSON.parse(localStorage.getItem('projects'))
@@ -78,15 +94,12 @@ function Database() {
     }
 
 
-    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks }
+    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks, getProject }
 }
 
-localStorage.clear()
 let database = Database();
 // database.createProject({ title: 'title', description: 'desc' });
 // database.createTask({ title: 'task title 2', description: 'task description 2', completed: true, priority: true }, 'lpo3vuu6')
-console.log(database.getWeeksTasks())
-
 
 
 
