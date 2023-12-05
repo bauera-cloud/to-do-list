@@ -7,6 +7,7 @@ module.exports = {
         index: './src/index.js',
     },
     devServer: {
+        watchFiles: ["src/*.html"],
         static: './dist',
     },
     plugins: [
