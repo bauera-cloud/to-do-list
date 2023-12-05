@@ -1,18 +1,85 @@
 @font-face {
-    font-family: 'MyFont';
-    src: url('./example.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'MyFont';
+  src: url('./example.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
 }
 
-h1 {
-    color: red;
-    font-family: 'myFont';
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-#charizard-image {
-    position: relative;
-    top: 10px;
-    width: 50px;
-    height: auto;
+.container {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr 1fr;
+  grid-template-rows: 0.4fr 1.6fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "sidebar main-content main-content"
+    "sidebar main-content main-content";
+  height: 100vh;
 }
+
+.header {
+  background-color: lightblue;
+  grid-area: header;
+}
+
+.sidebar {
+  background-color: lightcoral;
+  grid-area: sidebar;
+}
+
+.main-content {
+  background-color: lightgreen;
+  grid-area: main-content;
+}
+
+/* better layout with tabs and projects grids */
+/* 
+.container {  display: grid;
+    grid-template-columns: 0.6fr 1.4fr 1fr;
+    grid-template-rows: 0.3fr 0.6fr 2.1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "header header header"
+      "sidebar main-content main-content"
+      "sidebar main-content main-content";
+  }
+  
+  .header { grid-area: header; }
+  
+  .sidebar {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1.2fr 1fr 0.8fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "tabs tabs tabs"
+      "projects projects projects"
+      "projects projects projects";
+    grid-area: sidebar;
+  }
+  
+  .tabs { grid-area: tabs; }
+  
+  .projects { grid-area: projects; }
+  
+  .main-content { grid-area: main-content; }
+   */
+
+
+/* html */
+/* <div class="container">
+  <div class="header"></div>
+  <div class="sidebar">
+    <div class="tabs"></div>
+    <div class="projects"></div>
+  </div>
+  <div class="main-content"></div>
+</div> */
