@@ -17,7 +17,7 @@ function Database() {
 
     const createTask = ({ title, description, date, completed = false, priority = false }, projectId) => {
         const id = uniqid();
-        date = new Date(...dateNumbers(date))
+        date = new Date(date)
 
         // //input date string from html date (ex: 2014-24-2). output: [2014, 1, 24]
         function dateNumbers(date) {
@@ -61,7 +61,7 @@ function Database() {
     }
 
     //get project with either a projectId or a taskId
-    function getProject(id) {
+    const getProject = (id) => {
         let projects = JSON.parse(localStorage.getItem('projects'))
         let allTasks = getAllTasks()
         let project;
@@ -89,14 +89,37 @@ function Database() {
         return tasks
     }
 
+    //input: database.replaceProject("lpr8ourc", { title: projectTitle, description: projectDesc })
     const replaceProject = (projectId, projectReplacement) => {
-        let project = getProject(projectId)
-        let newProject = { ...project, ...projectReplacement };
-        deleteProject(projectId)
-
         let projects = JSON.parse(localStorage.getItem('projects'));
-        projects.push(newProject)
+        let project = getProject(projectId)
+        let projectIndex = projects.findIndex((project) => project.id === projectId)
+        let newProject = { ...project, ...projectReplacement };
+        projects[projectIndex] = newProject;
         localStorage.setItem('projects', JSON.stringify(projects))
+    }
+
+    const deleteTask = (taskId) => {
+        let project = getProject(taskId);
+        let taskIndex = project.tasks.findIndex((task) => task.id === taskId)
+        project.tasks.splice(taskIndex, 1)
+        replaceProject(project.id, project)
+    }
+
+    const getTask = (taskId) => {
+        return getProject(taskId).tasks.find((task) => task.id === taskId)
+    }
+
+    const replaceTask = (taskId, taskReplacement) => {
+        if (taskReplacement.date) {
+            taskReplacement.date = new Date(taskReplacement.date)
+        }
+        let project = getProject(taskId);
+        let task = getTask(taskId);
+        let taskIndex = project.tasks.findIndex((task) => task.id === taskId)
+        let newTask = { ...task, ...taskReplacement }
+        project.tasks[taskIndex] = newTask
+        replaceProject(project.id, project)
     }
 
     const _populateStorage = () => {
@@ -117,7 +140,7 @@ function Database() {
     }
 
 
-    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks, getProject, deleteProject, getProjectTasks, replaceProject }
+    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks, getProject, deleteProject, getProjectTasks, replaceProject, deleteTask, getTask, replaceTask }
 }
 
 // localStorage.clear()
@@ -127,12 +150,6 @@ let projectTitle = 'title input'
 let projectDesc = 'desc input'
 // database.createProject({ title: 'title', description: 'desc' });
 // database.createTask({ title: 'task title 2', description: 'task description 2', completed: true, priority: true }, 'lpo3vuu6')
-database.replaceProject("lpr8ourc", { title: projectTitle, description: projectDesc })
-
-
-
-
-
 
 
 
