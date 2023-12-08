@@ -6,13 +6,102 @@
     <title>
         <%= htmlWebpackPlugin.options.title %>
     </title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
     <div class="container">
-        <div class="header">header</div>
-        <div class="sidebar">sidebar</div>
-        <div class="main-content">main-content</div>
+        <div class="header">
+            <div id="to-do-icon">i</div>
+            <div>ToDo</div>
+        </div>
+        <div class="sidebar">
+            <div class="tabs">
+                <button class="tab">
+                    <div>i</div>
+                    <div>All</div>
+                </button>
+                <button class="tab">
+                    <div>i</div>
+                    <div>Today</div>
+                </button>
+                <button class="tab">
+                    <div>i</div>
+                    <div>Week</div>
+                </button>
+                <button class="tab">
+                    <div>i</div>
+                    <div>Important</div>
+                </button>
+                <button class="tab">
+                    <div>i</div>
+                    <div>Completed</div>
+                </button>
+            </div>
+            <div class="projects">
+                <div class="projects-header">
+                    <div>Projects</div>
+                    <div id="add-project-icon">i</div>
+                </div>
+                <button class="project tab">
+                    <div>
+                        <div class="project-icon">i</div>
+                        <div class="project-title">Project Title</div>
+                    </div>
+                    <div>
+                        <div class="edit-project">i</div>
+                        <div class="delete-project">i</div>
+                    </div>
+                </button>
+                <button class="project tab">
+                    <div>
+                        <div class="project-icon">i</div>
+                        <div class="project-title">Project Title</div>
+                    </div>
+                    <div>
+                        <div class="edit-project">i</div>
+                        <div class="delete-project">i</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="task-category-title">
+                <div id="task-category-icon">i</div>
+                <h2 id="task-category">All</h2>
+            </div>
+            <div class="tasks">
+                <div class="task">
+                    <div>
+                        <div class="task-checkbox">i</div>
+                        <div class="task-title">Task Title</div>
+                    </div>
+                    <div>
+                        <div class="task-date">2023-12-08</div>
+                        <div class="task-edit">i</div>
+                        <div class="task-delete">i</div>
+                        <div class="task-info">i</div>
+                    </div>
+                </div>
+                <div class="task">
+                    <div>
+                        <div class="task-checkbox">i</div>
+                        <div class="task-title">Task Title 2</div>
+                    </div>
+                    <div>
+                        <div class="task-date">2023-12-08</div>
+                        <div class="task-edit">i</div>
+                        <div class="task-delete">i</div>
+                        <div class="task-info">i</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tasks-header">
+                <div>Tasks</div>
+                <div id="add-task-icon">i</div>
+            </div>
+        </div>
     </div>
 </body>
 
