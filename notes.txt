@@ -17,6 +17,9 @@ DECLUTTER DATABASE() WITH DECONSTRUCTION OF CRUD OPERATORS
 
 
 
+checkbox click event
+i = check_circle
+
 
 
 

@@ -38,12 +38,8 @@ body {
   margin-left: 30px;
 }
 
-.material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
+.header>div:nth-child(1) {
+  width: 10px;
 }
 
 .main-content {
@@ -78,6 +74,12 @@ body {
   justify-content: space-between;
   padding: 20px;
   border-bottom: 1px solid rgb(187, 187, 187);
+  transition: background-color 0.5s;
+}
+
+.task:hover {
+  background-color: rgb(245, 245, 245);
+  cursor: pointer;
 }
 
 .task>div:nth-child(1) {
@@ -195,4 +197,45 @@ body {
   display: flex;
   gap: 15px;
   margin-right: 5px;
+}
+
+/* icon */
+
+/* Rules for sizing the icon. */
+.material-icons {
+  font-weight: 100;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.task-edit:hover,
+.task-delete:hover,
+.task-info:hover,
+.project-edit:hover,
+.project-delete:hover {
+  font-size: 19px;
+  cursor: pointer;
+}
+
+#add-project-icon:hover,
+#add-task-icon:hover {
+  cursor: pointer;
+}
+
+#add-task-icon {
+  visibility: hidden;
 }
