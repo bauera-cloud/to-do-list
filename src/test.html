@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+<body>
+    <dialog class="modal" id="add-project-modal">
+        <div class="modal-header">
+            <div class="modal-title">Add Project</div>
+            <button class="close-button">&#x2715</button>
+        </div>
+        <form class="modal-form" action="">
+            <div class="modal-body">
+                <div class="title">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div class="description">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <div>
+                    <button class="close-button modal-button">Cancel</button>
+                    <button class="modal-button save-button">Save</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    <button id="add-project-icon">Add Project</button>
+
+    <dialog class="modal" id="delete-project-modal">
+        <div class="modal-header">
+            <div class="modal-title">Delete Project</div>
+            <button class="close-button">&#x2715</button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure?</p>
+            <p>Project a will be gone forever!</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="close-button modal-button">Cancel</button>
+            <form action="">
+                <button class="modal-button delete-button">Delete</button>
+            </form>
+        </div>
+    </dialog>
+    <button id="delete-project-button">Delete Project</button>
+
+    <dialog class="modal" id="edit-project-modal">
+        <div class="modal-header">
+            <div class="modal-title">Edit Project</div>
+            <button class="close-button">&#x2715</button>
+        </div>
+        <form class="modal-form" action="">
+            <div class="modal-body">
+                <div class="title">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div class="description">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <div>
+                    <button class="close-button modal-button">Cancel</button>
+                    <button class="modal-button save-button">Save</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    <button id="edit-project-icon">Edit Project</button>
+
+    <dialog class="modal" id="delete-task-modal">
+        <div class="modal-header">
+            <div class="modal-title">Delete Task</div>
+            <button class="close-button">&#x2715</button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure?</p>
+            <p>Task a will be gone forever!</p>
+        </div>
+        <div class="modal-buttons">
+            <button class="close-button modal-button">Cancel</button>
+            <form action="">
+                <button class="modal-button delete-button">Delete</button>
+            </form>
+        </div>
+    </dialog>
+    <button id="delete-task-button">Delete Task</button>
+
+    <dialog class="modal" id="add-task-modal">
+        <div class="modal-header">
+            <div class="modal-title">Add task</div>
+            <button class="close-button">&#x2715</button>
+        </div>
+        <form class="modal-form" action="">
+            <div class="modal-body">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <div>
+                    <label for="due-date">Due Date</label>
+                    <input type="date" name="due-date" id="due-date">
+                </div>
+                <div class="priority-div">
+                    <label for="priority">Priority</label>
+                    <input type="checkbox" name="priority" id="priority" class="priority">
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <div>
+                    <button class="close-button modal-button">Cancel</button>
+                    <button class="modal-button save-button">Save</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    <button id="add-task-icon">Add task</button>
+
+    <dialog class="modal" id="edit-task-modal">
+        <div class="modal-header">
+            <div class="modal-title">Edit task</div>
+            <button class="close-button">&#x2715</button>
+        </div>
+        <form class="modal-form" action="">
+            <div class="modal-body">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <div>
+                    <label for="due-date">Due Date</label>
+                    <input type="date" name="due-date" id="due-date">
+                </div>
+                <div class="priority-div">
+                    <label for="priority">Priority</label>
+                    <input type="checkbox" name="priority" id="priority" class="priority">
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <div>
+                    <button class="close-button modal-button">Cancel</button>
+                    <button class="modal-button save-button">Save</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    <button id="edit-task-icon">Edit task</button>
+
+
+    <!-- <button data-open-model>Open</button>
+
+    <dialog data-modal>
+        <div>This is a modal</div>
+        <button>Close</button>
+    </dialog data-close-modal> -->
+
+
+</body>
+
+</html>

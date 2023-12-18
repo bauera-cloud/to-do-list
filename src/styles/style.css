@@ -236,6 +236,124 @@ body {
   cursor: pointer;
 }
 
-#add-task-icon {
+/* CHANGE BACK */
+/* #add-task-icon {
   visibility: hidden;
+} */
+
+
+/* modal styles */
+
+.modal {
+  padding: 0;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+}
+
+.modal button {
+  cursor: pointer;
+
+}
+
+.modal .modal-header {
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 10px 15px;
+}
+
+.modal .modal-header .close-button {
+  border: none;
+  background: none;
+  position: relative;
+  bottom: 15px;
+  left: 10px;
+}
+
+.modal .modal-body {
+  padding: 10px;
+}
+
+.modal .modal-form {
+  margin: 10px;
+}
+
+.modal .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 0;
+  border-top: 1px solid rgb(175, 175, 175);
+}
+
+.modal-button {
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  color: #24292E;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 6px 16px;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+}
+
+.modal-button:hover {
+  background-color: #F3F4F6;
+  transition-duration: 0.1s;
+}
+
+.modal-button:active {
+  background-color: #EDEFF2;
+}
+
+.save-button {
+  background-color: lightblue;
+}
+
+/* add/edit project, add task modal */
+
+.modal-form .modal-body div {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0
+}
+
+.modal-form .modal-body .priority-div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.priority {
+  visibility: hidden;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.priority:before {
+  position: relative;
+  bottom: 8px;
+  content: "\2606";
+  visibility: visible;
+}
+
+.priority:checked:before {
+  content: "\2605";
+}
+
+/* delete project modal */
+
+#delete-project-modal .modal-header,
+#delete-task-modal .modal-header {
+  background-color: red;
+  width: 300px;
+}
+
+#delete-project-modal .delete-button,
+#delete-task-modal .delete-button {
+  background-color: red;
 }
