@@ -1,5 +1,5 @@
 import uniqid from 'uniqid';
-import { compareAsc, format, isThisWeek, isToday, parseISO } from 'date-fns';
+import { isThisWeek, isToday, parseISO } from 'date-fns';
 
 function Database() {
 

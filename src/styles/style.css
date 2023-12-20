@@ -174,7 +174,7 @@ body {
   border-bottom: 1px solid black;
 }
 
-#add-project-icon {
+#project-add {
   position: relative;
   right: 10px;
 }
@@ -231,13 +231,13 @@ body {
   cursor: pointer;
 }
 
-#add-project-icon:hover,
-#add-task-icon:hover {
+#project-add:hover,
+#task-add:hover {
   cursor: pointer;
 }
 
 /* CHANGE BACK */
-/* #add-task-icon {
+/* #task-add {
   visibility: hidden;
 } */
 
