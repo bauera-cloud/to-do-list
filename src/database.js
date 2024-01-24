@@ -17,7 +17,7 @@ function Database() {
 
     const createTask = ({ title, description, date, completed = false, priority = false }, projectId) => {
         const id = uniqid();
-        date = new Date(date)
+        date = new Date(...dateNumbers(date))
 
         // //input date string from html date (ex: 2014-24-2). output: [2014, 1, 24]
         function dateNumbers(date) {
@@ -36,8 +36,13 @@ function Database() {
 
     const getAllTasks = () => {
         let projects = JSON.parse(localStorage.getItem('projects'));
-        let allTasks = projects.map((project) => project.tasks).flat()
-        return allTasks
+        if (projects) {
+            let allTasks = projects.map((project) => project.tasks).flat()
+            return allTasks
+        } else {
+            let noTasks = [];
+            return noTasks
+        }
     }
 
     const getCompletedTasks = () => {
@@ -47,7 +52,7 @@ function Database() {
 
     const getImportantTasks = () => {
         let allTasks = getAllTasks()
-        return allTasks.fil((task) => task.priority)
+        return allTasks.filter((task) => task.priority)
     }
 
     const getTodaysTasks = () => {
@@ -76,12 +81,27 @@ function Database() {
         return project
     }
 
+    let getSavedProject = () => {
+        /**
+         * Returns last project saved to the projects array
+         * 
+         * @return {Object} last Project from localStorage 'projects' array
+         */
+        let projects = JSON.parse(localStorage.getItem('projects'))
+        let lastProject = projects.at(-1)
+        return lastProject
+    }
+
     const deleteProject = (projectId) => {
         let projects = JSON.parse(localStorage.getItem('projects'));
-        let projectIndex = projects.findIndex((project) => project.id === projectId)
-        projects.splice(projectIndex, 1)
-        console.log('hi')
-        localStorage.setItem('projects', JSON.stringify(projects))
+        if (projects) {
+            let projectIndex = projects.findIndex((project) => project.id === projectId)
+            projects.splice(projectIndex, 1)
+            localStorage.setItem('projects', JSON.stringify(projects))
+        }
+        if (!projects.length) {
+            localStorage.clear();
+        }
     }
 
     const getProjectTasks = (projectId) => {
@@ -120,6 +140,7 @@ function Database() {
         let newTask = { ...task, ...taskReplacement }
         project.tasks[taskIndex] = newTask
         replaceProject(project.id, project)
+        return newTask
     }
 
     const _populateStorage = () => {
@@ -139,8 +160,14 @@ function Database() {
         _populateStorage();
     }
 
+    let getProjects = () => {
+        let projects = JSON.parse(localStorage.getItem('projects'))
+        if (projects) return projects
+    }
 
-    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks, getProject, deleteProject, getProjectTasks, replaceProject, deleteTask, getTask, replaceTask }
+
+    return { createProject, createTask, getAllTasks, getCompletedTasks, getImportantTasks, getTodaysTasks, getWeeksTasks, getProject, deleteProject, getProjectTasks, replaceProject, deleteTask, getTask, replaceTask, getProjects, getSavedProject }
 }
+
 let database = Database()
 export default database
